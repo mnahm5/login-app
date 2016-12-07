@@ -10,4 +10,11 @@ router.get('/register', function(req, res, next) {
     res.render('register', { title: 'Create an Account' });
 });
 
+router.get('/dashboard', function(req, res, next) {
+    res.render('dashboard', {
+        title: 'Dashboard',
+        layout: 'dashboard_layout'
+    });
+});
+
 module.exports = router;

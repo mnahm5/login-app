@@ -1,10 +1,22 @@
 <form class="form-signin">
     <h2 class="form-signin-heading">{{title}}</h2>
+
     <label class="sr-only">Full Name</label>
-    <input type="text" class="form-control" placeholder="Username" required autofocus>
+    <input name="name" type="text" class="form-control" placeholder="Full Name" required autofocus>
+
     <label class="sr-only">Username</label>
-    <input type="text" class="form-control" placeholder="Username" required>
+    <input name="username" type="text" class="form-control" placeholder="Username" required>
+
+    <label class="sr-only">Email Address</label>
+    <input name="email" type="email" class="form-control" placeholder="Email Address" required>
+
     <label class="sr-only">Password</label>
-    <input type="password" class="form-control" placeholder="Password" required>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+    <input name="password" type="password" class="form-control" placeholder="Password" required>
+
+    <label class="sr-only">Confirm Password</label>
+    <input name="password2" type="password" class="form-control" placeholder="Confirm Password" required>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+    <br>
+    Already have an account? <a href="/">Login Now</a>
 </form>
