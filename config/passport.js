@@ -13,6 +13,31 @@ module.exports = function (passport) {
         });
     });
 
+    // Login
+    passport.use('local-login', new LocalStrategy({
+        passReqToCallback: true
+    },
+    function (req, username, password, done) {
+        User.getUserByUsername(username, function (err, user) {
+            if (err) {
+                return done(err);
+            }
+            // Does User exists
+            if (!user) {
+                req.flash('error_message', 'User Not Found');
+                return done(null, false);
+            }
+            // Is Password Valid
+            if (!isValidPassword(user, password)) {
+                req.flash('error_message', 'Invalid Password');
+                return done(null, false);
+            }
+            req.flash('success_message', 'You are now logged in');
+            return done(null, user);
+        });
+    }));
+
+
     // Register
     passport.use('local-register', new LocalStrategy({
         passReqToCallback: true
@@ -56,6 +81,11 @@ module.exports = function (passport) {
             process.nextTick(findOrCreateUser);
         }
     ));
+
+    var isValidPassword = function (user, password) {
+        return bcrypt.compareSync(password, user.password);
+    };
+
     var createHash = function (password) {
         return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
     }
