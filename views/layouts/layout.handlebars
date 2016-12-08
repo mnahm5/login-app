@@ -7,7 +7,12 @@
 </head>
 <body>
     <div class="container">
-        {{{messages}}}
+        {{#if success_message}}
+            <div class="alert alert-success">{{success_messages}}</div>
+        {{/if}}
+        {{#if error_messages}}
+            <div class="alert alert-danger">{{error_messages}}</div>
+        {{/if}}
         {{#if errors}}
             {{#each errors}}
                 <div class="alert alert-danger">{{msg}}</div>

@@ -24,13 +24,18 @@
             </div><!--/.nav-collapse -->
         </div>
     </nav>
-    {{{messages}}}
-    {{#if errors}}
-        {{#each errors}}
-            {{msg}}
-        {{/each}}
-    {{/if}}
     <div class="container">
+        {{#if success_messages}}
+            <div class="alert alert-success">{{success_messages}}</div>
+        {{/if}}
+        {{#if error_messages}}
+            <div class="alert alert-danger">{{error_messages}}</div>
+        {{/if}}
+        {{#if errors}}
+            {{#each errors}}
+                {{msg}}
+            {{/each}}
+        {{/if}}
         {{{body}}}
     </div>
     <script src="/javascripts/bootstrap.js"></script>

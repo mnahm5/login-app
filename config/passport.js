@@ -28,7 +28,7 @@ module.exports = function (passport) {
                     // Does user exists
                     if (user) {
                         console.log('That user already exists');
-                        return done(null, false, req.flash('message', 'User already exists'));
+                        return done(null, false, req.flash('error_message', 'User already exists'));
                     }
                     else {
                         var newUser = new User();
@@ -46,7 +46,7 @@ module.exports = function (passport) {
                                 throw err;
                             }
                             else {
-                                req.flash('success','You are now registered and logged in');
+                                req.flash('success_message','You are now registered and logged in');
                                 return done(null, newUser);
                             }
                         });
