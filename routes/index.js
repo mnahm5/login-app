@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -41,7 +43,7 @@ router.post('/register', function (req, res, next) {
         });
     }
     else {
-        passport.authenticate('local-login', {
+        passport.authenticate('local-register', {
             successRedirect: '/dashboard',
             failureRedirect: '/',
             failureFlash: true
